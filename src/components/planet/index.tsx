@@ -1,21 +1,12 @@
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import type * as THREE from "three";
-import type { PlanetProps } from "./types";
+import { Orb } from "components/orb";
+import type { PlanetProps } from "types/planet";
 
-export const Planet = (props: PlanetProps) => {
-  const ref = useRef<THREE.Mesh>(null);
-
-  useFrame((_, delta) => {
-    if (!ref.current) return;
-    ref.current.rotation.x += delta;
-    ref.current.rotation.y += delta;
-  });
-
+export const Planet = ({ moons = [], ...rest }: PlanetProps) => {
   return (
-    <mesh ref={ref} {...props}>
-      <sphereGeometry args={props.size} />
-      <meshPhongMaterial />
-    </mesh>
+    <Orb {...rest}>
+      {moons.map(moon => (
+        <Orb key={moon.id} {...moon} />
+      ))}
+    </Orb>
   );
 };
