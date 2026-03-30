@@ -1,9 +1,9 @@
-import { OrbitControls } from "@react-three/drei"
-import { Planet } from "components/planet"
-import { useRef } from "react"
+import { OrbitControls } from "@react-three/drei";
+import { Planet } from "components/planet";
+import { useRef } from "react";
 
 function App() {
-  const controlsRef = useRef(null)
+  const controlsRef = useRef(null);
 
   return (
     <>
@@ -14,7 +14,7 @@ function App() {
       <ambientLight intensity={0.1} />
       <directionalLight position={[0, 0, 5]} color="red" />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
